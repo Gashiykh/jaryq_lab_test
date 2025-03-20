@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="row">
+    {% for reservation in reservations %}
+
+    <div class="card col-4 my-2 ms-1" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ reservation.table.restaurant.name }}</h5>
+          <h4 class="card-title">Столик #{{ reservation.table.number }}</h4>
+          <a href="{% url 'reservations_detail' id=reservation.id %}" class="btn btn-primary">Подробнее</a>
+        </div>
+    </div>
+
+    {% endfor %}
+    </div>
+{% endblock %}
