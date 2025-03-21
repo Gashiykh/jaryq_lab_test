@@ -9,6 +9,9 @@ done
 echo "=== Запуск миграций ==="
 python manage.py migrate --noinput
 
+echo "=== Сбор статических файлов ==="
+python manage.py collectstatic --noinput
+
 echo "=== Загрузка дефолтных данных ==="
 python manage.py loaddata fixtures/restaurant.json fixtures/table.json fixtures/reservation.json
 
