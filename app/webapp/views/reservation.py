@@ -1,34 +1,28 @@
-from django.views import generic
-from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView
 
-from core.models import Reservation
-from webapp.forms import ReservationForm
+from core.models import Table, Reservation
 
 
-class ReservationListView(generic.ListView):
-    model = Reservation
-    template_name = 'reservation/list.html'
-    context_object_name = 'reservations'
+class SeatingChartView(ListView):
+    model = Table
+    template_name = "reservation/chart.html"
+    context_object_name = "tables"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        try:
+            timeslot = int(self.request.GET.get("timeslot", 12))
+        except ValueError:
+            timeslot = 12
+        context["selected_timeslot"] = timeslot
 
-class ReservationDetailView(generic.DetailView):
-    model = Reservation
-    template_name = 'reservation/detail.html'
-    pk_url_kwarg = 'id'
+        reservations = Reservation.objects.filter(timeslot=timeslot)
 
+        reserved_table_ids = []
+        for res in reservations:
+            reserved_table_ids.append(res.table.id)
 
-class ReservationCreateView(generic.CreateView):
-    models = Reservation
-    template_name = 'reservation/create.html'
-    form_class = ReservationForm
+        context["reserved_table_ids"] = reserved_table_ids
 
-    def get_success_url(self):
-        return reverse('reservations_detail', kwargs={'id': self.object.id})
-
-
-class ReservationDeleteView(generic.DeleteView):
-    model = Reservation
-    pk_url_kwarg = 'id'
-
-    def get_success_url(self):
-        return reverse_lazy("reservations")
+        context["timeslot_options"] = range(0, 24)
+        return context
