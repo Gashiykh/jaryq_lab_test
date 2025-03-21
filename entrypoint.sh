@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+until nc -z "$POSTGRES_HOST" "$POSTGRES_PORT"; do
+  echo "Ждем подключения к PostgreSQL..."
+  sleep 1
+done
+
 echo "=== Запуск миграций ==="
 python manage.py migrate --noinput
 
