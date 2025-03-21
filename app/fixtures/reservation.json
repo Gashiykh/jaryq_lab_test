@@ -1,0 +1,10 @@
+[
+  {
+    "model": "core.reservation",
+    "pk": 1,
+    "fields": {
+      "timeslot": 12,
+      "table": 1
+    }
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "model": "core.restaurant",
+    "pk": 1,
+    "fields": {
+      "name": "mcdonalds",
+      "address": "idk"
+    }
+  }
+]

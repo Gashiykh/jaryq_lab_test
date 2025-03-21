@@ -1,0 +1,50 @@
+[
+  {
+    "model": "core.table",
+    "pk": 1,
+    "fields": {
+      "number": 1,
+      "restaurant": 1
+    }
+  },
+  {
+    "model": "core.table",
+    "pk": 2,
+    "fields": {
+      "number": 2,
+      "restaurant": 1
+    }
+  },
+  {
+    "model": "core.table",
+    "pk": 3,
+    "fields": {
+      "number": 3,
+      "restaurant": 1
+    }
+  },
+  {
+    "model": "core.table",
+    "pk": 4,
+    "fields": {
+      "number": 4,
+      "restaurant": 1
+    }
+  },
+  {
+    "model": "core.table",
+    "pk": 5,
+    "fields": {
+      "number": 5,
+      "restaurant": 1
+    }
+  },
+  {
+    "model": "core.table",
+    "pk": 6,
+    "fields": {
+      "number": 6,
+      "restaurant": 1
+    }
+  }
+]
