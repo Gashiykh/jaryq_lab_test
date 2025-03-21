@@ -13,4 +13,4 @@ echo "=== Загрузка дефолтных данных ==="
 python manage.py loaddata fixtures/restaurant.json fixtures/table.json fixtures/reservation.json
 
 echo "=== Запуск сервера ==="
-python manage.py runserver 0.0.0.0:8000
+gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
