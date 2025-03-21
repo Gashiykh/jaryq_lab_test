@@ -1,12 +1,9 @@
 from django.views import generic
 
 from webapp.views.reservation import (
-    ReservationListView,
-    ReservationDetailView,
-    ReservationCreateView,
-    ReservationDeleteView
+    SeatingChartView
 )
 
 
 class RedirectView(generic.RedirectView):
-    pattern_name = "reservations"
+    pattern_name = "reservation_chart"
